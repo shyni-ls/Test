@@ -1,0 +1,46 @@
+<div class="bg">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="h3 fw-bold text-dark my-4">Create Patient</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <div class="mb-2">
+              <label for="">Patient Name</label>
+              <input name="name" [(ngModel)]="patient.name" required="true" type="text" class="form-control" placeholder="patient name">
+            </div>
+            <div class="mb-2">
+              <label for="name">Doctor Name</label>
+              <select class="form-control" [(ngModel)]="patient.visitedDoctor" name="name">
+                <option *ngFor="let doctor of doctors" value="{{doctor.name}}">{{doctor.name}}</option>
+            </select>
+          </div>
+            <div class="mb-2">
+              <label for="DateOfVisit">Date Of Visit</label>
+              <input name="field" required="true" [(ngModel)]="patient.DateOfVisit" type="date" class="form-control" placeholder="date">
+            </div>
+            <div class="mb-2">
+              <label for="age">Age</label>
+              <input name="age" required="true" [(ngModel)]="patient.age" type="number" class="form-control" placeholder="age">
+            </div>
+            <div class="mb-2">
+              <label for="">Precription</label>
+              <input name="Precription" [(ngModel)]="patient.prescription" name="prescription" required="true" type="text" class="form-control" placeholder="Medication">
+            </div>
+
+            <div class="mb-2">
+              <button type="submit" (click)="savePatient()" class="btn btn-danger">Create</button>
+              <a routerLink="/" class="btn btn-dark ms-2">Close</a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

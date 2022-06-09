@@ -1,0 +1,111 @@
+<div class="container">
+  <form class="form-inline mt-4">
+    <div class="mb-2">
+      <label for="doctor">Choose Doctor</label>
+      <select class="form-control" [(ngModel)]="doc.name" name="name">
+        <option [value]="doc.name" *ngFor="let doc of doctor">{{doc.name}}</option>
+      </select>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="btn btn-outline-danger my-4 " type="submit" (click)="Doctorinfo()"><i
+          class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div>
+<!--  -->
+<div class="card text-center">
+  <div class="card-header">
+    DOCTOR PROFILE
+  </div>
+  <div class="card-body" *ngIf="doc!=null">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row container d-flex justify-content-center">
+          <div class="col-xl-6 col-md-12">
+            <div class="card user-card-full">
+              <div class="row m-l-0 m-r-0">
+                <div class="col-sm-4 bg-c-lite-green user-profile">
+                  <div class="card-block text-center text-white">
+                    <h6 class="f-w-600 text-uppercase">{{doc.name}}</h6>
+                    
+                    <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-block">
+                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Expertise</p>
+                        <h6 class="text-muted f-w-400">{{doc.specilistField}}</h6>
+                      </div>
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Phone</p>
+                        <h6 class="text-muted f-w-400">98979989898</h6>
+                      </div>
+                    </div>
+                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Patient Attended</h6>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">All</p>
+                        <h6 class="text-muted f-w-400">{{doc.visitedpatient_count}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Choose Best Inspire Rest
+  </div>
+  <!--  -->
+  <div class="container">
+    <div class="add-doc">
+      <div class="modal-button">
+        <button class="btn btn-lg btn-outline-primary" (click)="open(addDoctorcontent)">Add New Doctor</button> 
+      </div>
+    </div>
+  </div>
+   
+   <!-- ADD Modal -->
+   <ng-template #addDoctorcontent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="addDoctorModal">Create Doctor Information</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+  <form >
+    <div class="mb-2">
+      <label for="name">Name</label>
+      <input name="name" [(ngModel)]="doctor.name" name="name" [value]="doctor.name" required="true" type="text" class="form-control" placeholder="Doctor name">
+    </div>
+    <div class="mb-2">
+      <label for="specilistField">Specialization</label>
+      <input name="field" [(ngModel)]="doctor.specilistField" name="specilistField" [value]="doctor.specilistField" required="true" type="text" class="form-control" placeholder="Enter Field">
+    </div>
+    <div class="mb-2">
+      <label for="">Age</label>
+      <input name="age" [(ngModel)]="doctor.age" name="age" [value]="doctor.age" required="true" type="number" class="form-control" placeholder="age">
+    </div>
+    <div class="mb-2">
+      <label for="gender">Choose Gender</label>
+      <select id="gender"[(ngModel)]="doctor.gender" [value]="doctor.gender" class="form-control" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+    <div class="mb-2">
+      <button type="submit" (click)="saveDoctor()" class="btn btn-danger">Create</button>
+      <a routerLink="/" class="btn btn-dark ms-2">Close</a>
+    </div>
+  </form></div>
+</ng-template>
+ <hr>
+<pre>{{ closeResult }}</pre>
